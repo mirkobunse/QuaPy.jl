@@ -2,6 +2,12 @@ module Datasets
 
 import ..__QUAPY, ..QuaPyObject
 
+# lists of Dataset IDs
+reviews_sentiment_datasets() = __QUAPY.datasets.REVIEWS_SENTIMENT_DATASETS
+twitter_sentiment_datasets_test() = __QUAPY.datasets.TWITTER_SENTIMENT_DATASETS_TEST
+twitter_sentiment_datasets_training() = __QUAPY.datasets.TWITTER_SENTIMENT_DATASETS_TRAIN
+uci_datasets() = __QUAPY.datasets.UCI_DATASETS
+
 # LabelledCollection interface
 const LabelledCollection = QuaPyObject{:LabelledCollection}
 instances(x::LabelledCollection) = x.__object.instances
