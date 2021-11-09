@@ -14,7 +14,7 @@ function __init__()
     copy!(__QUAPY, quapy)
 end
 
-include("DataSets.jl")
-export DataSets
+include("Datasets.jl")
+export Datasets
 
 end # module

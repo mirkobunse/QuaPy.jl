@@ -1,4 +1,4 @@
-module DataSets
+module Datasets
 
 import ..__QUAPY
 
