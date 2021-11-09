@@ -3,6 +3,10 @@ uuid = "bf608503-7ba0-4632-bcd4-8c97f8bf3c7a"
 authors = ["Mirko Bunse <mirko.bunse@cs.tu-dortmund.de> and contributors"]
 version = "0.1.0"
 
+[deps]
+Conda = "8f4d0f93-b110-5947-807f-2305c1781a2d"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+
 [compat]
 julia = "1"
 
