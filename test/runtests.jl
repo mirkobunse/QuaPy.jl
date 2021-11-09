@@ -1,6 +1,6 @@
 using QuaPy
 using Test
 
-@testset "QuaPy.jl" begin
-    # Write your tests here.
+@testset "DataSets" begin
+    QuaPy.DataSets.fetch_twitter("semeval16"; for_model_selection=true)
 end
