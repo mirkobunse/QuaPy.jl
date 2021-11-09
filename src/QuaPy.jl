@@ -14,6 +14,10 @@ function __init__()
     copy!(__QUAPY, quapy)
 end
 
+struct QuaPyObject{classname}
+    __object::PyObject
+end
+
 include("Datasets.jl")
 export Datasets
 
