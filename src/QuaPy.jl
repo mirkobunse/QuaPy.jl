@@ -21,4 +21,7 @@ end
 include("Datasets.jl")
 export Datasets
 
+include("Methods.jl")
+export Methods
+
 end # module
