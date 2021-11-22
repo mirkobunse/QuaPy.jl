@@ -29,6 +29,10 @@ get_counts(x::LabelledCollection) = x.counts()
 is_binary(x::LabelledCollection) = x.binary
 get_stats(x::LabelledCollection; show::Bool=true) = x.stats(; show=show)
 
+# LabelledCollection constructor
+LabelledCollection(X::AbstractArray, y::AbstractVector{I}) where {I<:Integer} =
+    LabelledCollection(__QUAPY.data.LabelledCollection(X, y))
+
 # Dataset interface
 const Dataset = QuaPyObject{:Dataset}
 get_training(x::Dataset) = LabelledCollection(x.training)
