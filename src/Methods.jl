@@ -1,7 +1,8 @@
 module Methods
 
 import ..__QUAPY, ..QuaPyObject
-import ..Datasets: LabelledCollection, Dataset
+import ..Datasets: LabelledCollection
+export fit!, quantify
 
 # BaseQuantifier interface
 const BaseQuantifier = QuaPyObject{:BaseQuantifier}

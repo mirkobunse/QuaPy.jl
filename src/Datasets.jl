@@ -1,6 +1,17 @@
 module Datasets
 
 import ..__QUAPY, ..QuaPyObject
+export
+    instances,
+    labels,
+    classes,
+    prevalence,
+    counts,
+    is_binary,
+    stats,
+    training,
+    test,
+    vocabulary
 
 # lists of Dataset IDs
 reviews_sentiment_datasets() = __QUAPY.datasets.REVIEWS_SENTIMENT_DATASETS

@@ -1,6 +1,6 @@
 module QuaPy
 
-using Conda, PyCall
+using Conda, PyCall, Reexport
 
 # import the Python package "quapy" into __QUAPY
 const __QUAPY = PyNULL()
@@ -19,9 +19,11 @@ struct QuaPyObject{classname}
 end
 
 include("Datasets.jl")
-export Datasets
+@reexport using .Datasets
+using .Datasets: instances # solve the naming conflict with Base.instances
+export instances
 
 include("Methods.jl")
-export Methods
+@reexport using .Methods
 
 end # module
