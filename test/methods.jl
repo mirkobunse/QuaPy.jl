@@ -1,9 +1,32 @@
 @testset "Methods" begin
     svm = pyimport_conda("sklearn.svm", "scikit-learn").LinearSVC()
     dataset = QuaPy.Datasets.fetch_twitter("hcr")
-    model = QuaPy.Methods.ClassifyAndCount(svm)
-    fit!(model, get_training(dataset))
-    f_est = quantify(model, get_instances(get_test(dataset)))
     f_true = get_prevalence(get_test(dataset))
-    @info "Prevalences of the 'hcr' test set" f_est f_true
-end # Datasets
+
+    # ClassifyAndCount
+    cc = QuaPy.Methods.ClassifyAndCount(svm)
+    fit!(cc, get_training(dataset))
+    f_cc = quantify(cc, get_instances(get_test(dataset)))
+
+    # AdjustedClassifyAndCount
+    acc = QuaPy.Methods.AdjustedClassifyAndCount(svm)
+    fit!(acc, get_training(dataset))
+    f_acc = quantify(acc, get_instances(get_test(dataset)))
+
+    # ProbabilisticClassifyAndCount
+    pcc = QuaPy.Methods.PCC(svm)
+    fit!(pcc, get_training(dataset))
+    f_pcc = quantify(pcc, get_instances(get_test(dataset)))
+
+    # ProbabilisticAdjustedClassifyAndCount
+    pacc = QuaPy.Methods.PACC(svm)
+    fit!(pacc, get_training(dataset))
+    f_pacc = quantify(pacc, get_instances(get_test(dataset)))
+
+    # ExpectationMaximizationQuantifier
+    emq = QuaPy.Methods.EMQ(svm)
+    fit!(emq, get_training(dataset))
+    f_emq = quantify(emq, get_instances(get_test(dataset)))
+
+    @info "Prevalences of the 'hcr' test set" f_true f_cc f_acc f_pcc f_pacc f_emq
+end # Methods
