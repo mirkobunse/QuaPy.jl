@@ -9,7 +9,7 @@
         # make sure that the wrapper works
         svm = pyimport_conda("sklearn.svm", "scikit-learn").LinearSVC()
         cc = QuaPy.Methods.ClassifyAndCount(svm)
-        fit!(cc, lc)
+        QuaPy.fit!(cc, lc)
         f_cc = quantify(cc, X)
         f_true = get_prevalence(lc)
         @info "Random LabelledCollection" f_true f_cc

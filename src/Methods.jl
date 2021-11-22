@@ -13,8 +13,9 @@ quantify(q::BaseQuantifier, instances) = q.quantify(instances)
 fit!(q::BaseQuantifier, X::AbstractArray, y::AbstractVector{I}; kwargs...) where {I<:Integer} =
     fit!(q, LabelledCollection(X, y); kwargs...)
 
-# meta-programming: wrap the constructor of each aggregative method
-for c in [
+# a mapping from module names to lists of methods
+__METHODS = Dict(
+    :aggregative => [
         :ClassifyAndCount, :CC,
         :AdjustedClassifyAndCount, :ACC,
         :ProbabilisticClassifyAndCount, :PCC,
@@ -23,9 +24,22 @@ for c in [
         :HellingerDistanceY, :HDy,
         :ExplicitLossMinimisation, :ELM,
         :MedianSweep, :MS,
-        :MedianSweep2, :MS2]
-    @eval $(c)(args...; kwargs...) =
-        BaseQuantifier(__QUAPY.method.aggregative.$(c)(args...; kwargs...))
+        :MedianSweep2, :MS2
+    ],
+    :non_aggregative => [
+        :MaximumLikelihoodPrevalenceEstimation
+    ],
+    :meta => [
+        :Ensemble, :ECC, :EACC, :EPACC, :EHDy, :EEMQ
+    ]
+)
+
+# meta-programming: wrap the constructor of each quantification method
+for (n, methods) in __METHODS
+    for m in methods
+        @eval $(m)(args...; kwargs...) =
+            BaseQuantifier(__QUAPY.method.$(n).$(m)(args...; kwargs...))
+    end
 end
 
 end # module
