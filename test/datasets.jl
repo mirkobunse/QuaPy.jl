@@ -5,6 +5,6 @@
     )
     @testset "fetch_twitter $id" for id in twitter_data
         dataset = QuaPy.Datasets.fetch_twitter(id; for_model_selection=id=="semeval")
-        QuaPy.Datasets.stats(QuaPy.Datasets.training(dataset))
+        QuaPy.Datasets.get_stats(QuaPy.Datasets.get_training(dataset))
     end # fetch_twitter
 end # Datasets

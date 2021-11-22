@@ -22,8 +22,6 @@ Base.getproperty(x::QuaPyObject, p::Symbol) =
 
 include("Datasets.jl")
 @reexport using .Datasets
-using .Datasets: instances # solve the naming conflict with Base.instances
-export instances
 
 include("Methods.jl")
 @reexport using .Methods

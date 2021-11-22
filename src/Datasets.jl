@@ -2,16 +2,16 @@ module Datasets
 
 import ..__QUAPY, ..QuaPyObject
 export
-    instances,
-    labels,
-    classes,
-    prevalence,
-    counts,
+    get_instances,
+    get_labels,
+    get_classes,
+    get_prevalence,
+    get_counts,
     is_binary,
-    stats,
-    training,
-    test,
-    vocabulary
+    get_stats,
+    get_training,
+    get_test,
+    get_vocabulary
 
 # lists of Dataset IDs
 reviews_sentiment_datasets() = __QUAPY.datasets.REVIEWS_SENTIMENT_DATASETS
@@ -21,22 +21,22 @@ uci_datasets() = __QUAPY.datasets.UCI_DATASETS
 
 # LabelledCollection interface
 const LabelledCollection = QuaPyObject{:LabelledCollection}
-instances(x::LabelledCollection) = x.instances
-labels(x::LabelledCollection) = x.labels
-classes(x::LabelledCollection) = x.classes_
-prevalence(x::LabelledCollection) = x.prevalence()
-counts(x::LabelledCollection) = x.counts()
+get_instances(x::LabelledCollection) = x.instances
+get_labels(x::LabelledCollection) = x.labels
+get_classes(x::LabelledCollection) = x.classes_
+get_prevalence(x::LabelledCollection) = x.prevalence()
+get_counts(x::LabelledCollection) = x.counts()
 is_binary(x::LabelledCollection) = x.binary
-stats(x::LabelledCollection; show::Bool=true) = x.stats(; show=show)
+get_stats(x::LabelledCollection; show::Bool=true) = x.stats(; show=show)
 
 # Dataset interface
 const Dataset = QuaPyObject{:Dataset}
-training(x::Dataset) = LabelledCollection(x.training)
-test(x::Dataset) = LabelledCollection(x.test)
-vocabulary(x::Dataset) = x.vocabulary
-classes(x::Dataset) = x.classes_
+get_training(x::Dataset) = LabelledCollection(x.training)
+get_test(x::Dataset) = LabelledCollection(x.test)
+get_vocabulary(x::Dataset) = x.vocabulary
+get_classes(x::Dataset) = x.classes_
 is_binary(x::Dataset) = x.binary
-stats(x::Dataset) = x.stats()
+get_stats(x::Dataset) = x.stats()
 
 """
     fetch_twitter(id)
