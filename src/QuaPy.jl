@@ -17,6 +17,8 @@ end
 struct QuaPyObject{classname}
     __object::PyObject
 end
+Base.getproperty(x::QuaPyObject, p::Symbol) =
+    p==:__object ? getfield(x, p) : getproperty(x.__object, p)
 
 include("Datasets.jl")
 @reexport using .Datasets
