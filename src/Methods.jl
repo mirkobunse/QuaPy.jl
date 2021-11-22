@@ -6,8 +6,12 @@ export fit!, quantify
 
 # BaseQuantifier interface
 const BaseQuantifier = QuaPyObject{:BaseQuantifier}
-fit!(x::BaseQuantifier, data::LabelledCollection; kwargs...) = x.fit(data.__object; kwargs...)
-quantify(x::BaseQuantifier, instances) = x.quantify(instances)
+fit!(q::BaseQuantifier, data::LabelledCollection; kwargs...) = q.fit(data.__object; kwargs...)
+quantify(q::BaseQuantifier, instances) = q.quantify(instances)
+
+# sklearn-style wrapper
+fit!(q::BaseQuantifier, X::AbstractArray, y::AbstractVector{I}; kwargs...) where {I<:Integer} =
+    fit!(q, LabelledCollection(X, y); kwargs...)
 
 # meta-programming: wrap the constructor of each aggregative method
 for c in [
