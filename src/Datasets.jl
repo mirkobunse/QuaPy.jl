@@ -16,7 +16,7 @@ classes(x::LabelledCollection) = x.__object.classes_
 prevalence(x::LabelledCollection) = x.__object.prevalence()
 counts(x::LabelledCollection) = x.__object.counts()
 is_binary(x::LabelledCollection) = x.__object.binary
-stats(x::LabelledCollection; show::Bool=true) = x.__object.stats(; show)
+stats(x::LabelledCollection; show::Bool=true) = x.__object.stats(; show=show)
 
 # Dataset interface
 const Dataset = QuaPyObject{:Dataset}
