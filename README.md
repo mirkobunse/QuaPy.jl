@@ -1,9 +1,6 @@
 # QuaPy.jl
 
-[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://mirkobunse.github.io/QuaPy.jl/stable)
-[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://mirkobunse.github.io/QuaPy.jl/dev)
 [![Build Status](https://github.com/mirkobunse/QuaPy.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/mirkobunse/QuaPy.jl/actions/workflows/CI.yml?query=branch%3Amain)
-[![Coverage](https://codecov.io/gh/mirkobunse/QuaPy.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/mirkobunse/QuaPy.jl)
 
 A Julia wrapper for [QuaPy](https://github.com/HLT-ISTI/QuaPy), the open source framework for quantification.
 
