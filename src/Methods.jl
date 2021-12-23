@@ -10,7 +10,7 @@ fit!(q::BaseQuantifier, data::LabelledCollection; kwargs...) = q.fit(data.__obje
 quantify(q::BaseQuantifier, instances) = q.quantify(instances)
 
 # sklearn-style wrapper
-fit!(q::BaseQuantifier, X::AbstractArray, y::AbstractVector{I}; kwargs...) where {I<:Integer} =
+fit!(q::BaseQuantifier, X::Any, y::AbstractVector{I}; kwargs...) where {I<:Integer} =
     fit!(q, LabelledCollection(X, y); kwargs...)
 
 # a mapping from module names to lists of methods
